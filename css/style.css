@@ -19,20 +19,23 @@
 
 html {
     overflow-x: hidden;
+    height: 100vh;
+    /* background-color: red; */
+
 }
 
 body {
     position: relative;
-    max-width: 100vw;
-    height: 100dvh;
+    height: 100%;
     font-family: 'Inconsolata', serif;
     background: url('../images/background-mobile.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0 90%;
+    background-position: 0 95%;
     color: #fff;
     background-color: var(--Neutral-900);
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
+    /* background-color: green; */
 }
 
 .container {
@@ -42,33 +45,27 @@ body {
     text-align: center;
 }
 
-
 .pattern {
-    position: absolute;
+    position: fixed;
     z-index: -1;
+
 }
 
 .pattern img {
-    display: inline-block;
     width: 100%;
-    height: 100%;
 }
 
 .lines {
-    position: absolute;
     top: 0;
     left: 0;
     width: 1000px;
-}
-
-.lines img {
-    width: 100%;
 }
 
 .pattern-top {
     width: 100px;
     top: 25px;
     right: 0;
+
 }
 
 .pattern-bottom {
