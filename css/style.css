@@ -19,9 +19,7 @@
 
 html,
 body {
-    position: relative;
     overflow-x: hidden;
-    height: auto;
     min-height: 100%;
 }
 
@@ -37,7 +35,6 @@ body {
     color: #fff;
     background-color: var(--Neutral-900);
     overflow: hidden;
-    /* background-color: green; */
 
 }
 
@@ -63,7 +60,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    width: 400vw;
+    width: 1000px;
 }
 
 .pattern-top {
@@ -101,7 +98,9 @@ body {
 }
 
 /* Form section */
-.form-section {}
+.form-section {
+    /* display: none; */
+}
 
 h1 {
     font-size: 1.75rem;
@@ -126,7 +125,7 @@ form label {
 form input {
     display: block;
     width: 100%;
-    padding: 15px;
+    padding: 17px;
     border-radius: 10px;
     margin: .75em 0 1.7em;
     background: hsla(245, 19%, 35%, 0.4);
@@ -144,12 +143,12 @@ form input::placeholder {
     font-size: 1.1rem;
     color: var(--Neutral-300);
     position: relative;
-    border: 1px dashed var(--Neutral-300);
     border-radius: 10px;
     margin: .8em 0;
     text-align: center;
-    padding: 1em 0 1.25em;
+    padding: 1em 0;
     background: hsla(245, 19%, 35%, 0.4);
+    border: 2px dashed hsla(245, 15%, 58%, 0.7);
 }
 
 .upload img {
@@ -170,6 +169,7 @@ form input::placeholder {
 
 .info {
     font-size: 0.75rem;
+    font-weight: 700;
     color: var(--Neutral-300);
     margin: 1em 0 2.5em;
     display: flex;
