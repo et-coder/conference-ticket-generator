@@ -17,15 +17,17 @@
     --Gradient-text: hsl(7, 86%, 67%);
 }
 
-html {
+html,
+body {
+    position: relative;
     overflow-x: hidden;
-    height: 100vh;
-    /* background-color: red; */
-
+    height: auto;
+    min-height: 100%;
 }
 
 body {
     position: relative;
+    display: flex;
     height: 100%;
     font-family: 'Inconsolata', serif;
     background: url('../images/background-mobile.png');
@@ -34,8 +36,9 @@ body {
     background-position: 0 95%;
     color: #fff;
     background-color: var(--Neutral-900);
-    overflow-x: hidden;
+    overflow: hidden;
     /* background-color: green; */
+
 }
 
 .container {
@@ -46,9 +49,10 @@ body {
 }
 
 .pattern {
-    position: fixed;
+    width: 100%;
+    position: absolute;
     z-index: -1;
-
+    flex-grow: 1;
 }
 
 .pattern img {
@@ -56,9 +60,10 @@ body {
 }
 
 .lines {
+    height: 100%;
     top: 0;
     left: 0;
-    width: 1000px;
+    width: 400vw;
 }
 
 .pattern-top {
@@ -86,25 +91,108 @@ body {
     right: -60px;
 }
 
-.form-section {}
-
 .logo {
     display: inline-block;
     margin: 1em 0 .5em;
 }
 
 .logo img {
-    width: 150px;
+    width: 170px;
 }
 
+/* Form section */
+.form-section {}
+
 h1 {
-    margin: .75em 0;
+    font-size: 1.75rem;
+    margin: 1em 0;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: var(--Neutral-300);
+    margin-bottom: 2.5em;
 }
 
 form {
     text-align: left;
+    margin: 2em 0 5em;
 }
 
+form label {
+    font-size: 1.2rem;
+}
+
+form input {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    margin: .75em 0 1.7em;
+    background: hsla(245, 19%, 35%, 0.4);
+    border: 2px solid var(--Neutral-700);
+    outline: none;
+}
+
+form input::placeholder {
+    font-size: 1rem;
+    color: var(--Neutral-300);
+    opacity: 0.8;
+}
+
+.upload {
+    font-size: 1.1rem;
+    color: var(--Neutral-300);
+    position: relative;
+    border: 1px dashed var(--Neutral-300);
+    border-radius: 10px;
+    margin: .8em 0;
+    text-align: center;
+    padding: 1em 0 1.25em;
+    background: hsla(245, 19%, 35%, 0.4);
+}
+
+.upload img {
+    display: block;
+    width: 50px;
+    margin: 0 auto 1em;
+    border: 2px solid var(--Neutral-700);
+    background: hsla(245, 19%, 35%, 0.6);
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.upload input {
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+}
+
+.info {
+    font-size: 0.75rem;
+    color: var(--Neutral-300);
+    margin: 1em 0 2.5em;
+    display: flex;
+    align-items: center;
+}
+
+.info img {
+    margin-right: .8em;
+}
+
+button {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--Neutral-900);
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--Orange-500);
+
+}
+
+/* Ticket Section */
 .ticket-section {
     display: none;
 }
@@ -115,5 +203,5 @@ form {
 }
 
 .attribution a {
-    color: hsl(228, 45%, 44%);
+    color: var(--Orange-500);
 }
