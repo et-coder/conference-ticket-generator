@@ -6,6 +6,112 @@
     box-sizing: border-box;
 }
 
+:root {
+    --Neutral-0: hsl(0, 0%, 100%);
+    --Neutral-300: hsl(252, 6%, 83%);
+    --Neutral-500: hsl(245, 15%, 58%);
+    --Neutral-700: hsl(245, 19%, 35%);
+    --Neutral-900: hsl(248, 70%, 10%);
+    --Orange-500: hsl(7, 88%, 67%);
+    --Orange-700: hsl(7, 71%, 60%);
+    --Gradient-text: hsl(7, 86%, 67%);
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    max-width: 100vw;
+    height: 100dvh;
+    font-family: 'Inconsolata', serif;
+    background: url('../images/background-mobile.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 90%;
+    color: #fff;
+    background-color: var(--Neutral-900);
+    /* overflow-x: hidden; */
+}
+
+.container {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 1em;
+    text-align: center;
+}
+
+
+.pattern {
+    position: absolute;
+    z-index: -1;
+}
+
+.pattern img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000px;
+}
+
+.lines img {
+    width: 100%;
+}
+
+.pattern-top {
+    width: 100px;
+    top: 25px;
+    right: 0;
+}
+
+.pattern-bottom {
+    width: 300px;
+    bottom: -5px;
+    left: 0;
+}
+
+.circle-top {
+    width: 150px;
+    top: -30px;
+    left: -30px;
+}
+
+.circle-middle {
+    width: 150px;
+    top: 40%;
+    right: -60px;
+}
+
+.form-section {}
+
+.logo {
+    display: inline-block;
+    margin: 1em 0 .5em;
+}
+
+.logo img {
+    width: 150px;
+}
+
+h1 {
+    margin: .75em 0;
+}
+
+form {
+    text-align: left;
+}
+
+.ticket-section {
+    display: none;
+}
+
 .attribution {
     font-size: 11px;
     text-align: center;
