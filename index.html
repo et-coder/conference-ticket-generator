@@ -32,8 +32,21 @@
 
         <form>
           <label for="avatar">Upload Avatar</label>
-          <div class="upload"><img src="images/icon-upload.svg" alt="" class="upload">Drag and drop or click to
-            upload<input type="file" id="avatar" name="avatar"></div>
+          <input type="file" id="avatar" name="avatar" hidden accept="image/png, image/jpg">
+          <div class="upload-zone">
+            <div class="upload">
+              <img src="images/icon-upload.svg" alt="">
+              <p>Drag and drop or click to
+                upload</p>
+            </div>
+
+            <div class="preview">
+              <img class="preview-image" src="" alt="">
+              <button class="remove-btn">Remove Image</button>
+              <button class="change-btn">Change Image</button>
+            </div>
+          </div>
+
           <p class="info"><img src="images/icon-info.svg" alt="">Upload your photo (JPG or PNG, max size: 500KB).</p>
 
           <label for="name">Full Name</label>
@@ -44,7 +57,7 @@
 
           <label for="username">GitHub Username</label>
           <input type="text" id="username" name="username" placeholder="@yourusername">
-          <button type="submit">Generate My Ticket
+          <button class="btn" type="submit">Generate My Ticket
           </button>
         </form>
       </section>
