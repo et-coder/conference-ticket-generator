@@ -147,14 +147,13 @@ form input::placeholder {
     opacity: 0.8;
 }
 
-.upload {
+.upload-zone {
     font-size: 1.1rem;
     color: var(--Neutral-300);
     position: relative;
     border-radius: 10px;
     margin: .8em 0;
     text-align: center;
-    padding: 1em .5em;
     background: hsla(245, 19%, 35%, 0.4);
     border: 2px dashed hsla(245, 15%, 58%, 0.7);
 }
@@ -167,6 +166,48 @@ form input::placeholder {
     background: hsla(245, 19%, 35%, 0.6);
     border-radius: 10px;
     padding: 0.5em;
+}
+
+#avatar {
+    display: none;
+}
+
+.upload {
+    padding: 1em .5em;
+}
+
+.upload:hover {
+    cursor: pointer;
+}
+
+.preview {
+    display: none;
+    padding: 1em;
+}
+
+.preview-image {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1em;
+    border-radius: 12px;
+    border: 2px solid var(--Neutral-500);
+    object-fit: cover;
+}
+
+.preview button {
+    font-size: .8rem;
+    background-color: var(--Neutral-700);
+    color: var(--Neutral-300);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.preview button:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .info {
@@ -182,7 +223,7 @@ form input::placeholder {
     margin-right: .8em;
 }
 
-button {
+.btn {
     font-size: 1rem;
     font-weight: 600;
     color: var(--Neutral-900);
