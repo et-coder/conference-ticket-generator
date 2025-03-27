@@ -21,21 +21,20 @@ html,
 body {
     overflow-x: hidden;
     min-height: 100%;
+    width: 100vw;
 }
 
 body {
     position: relative;
-    display: flex;
     height: 100%;
+    width: 100%;
     font-family: 'Inconsolata', serif;
     background: url('../images/background-mobile.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0 95%;
     color: #fff;
     background-color: var(--Neutral-900);
     overflow: hidden;
-
 }
 
 .container {
@@ -46,7 +45,6 @@ body {
 }
 
 .pattern {
-    width: 100%;
     position: absolute;
     z-index: -1;
     flex-grow: 1;
@@ -57,14 +55,19 @@ body {
 }
 
 .lines {
+    width: 100vw;
     height: 100%;
     top: 0;
     left: 0;
-    width: 1000px;
+    overflow: hidden;
+}
+
+.lines img {
+    width: 1100px;
 }
 
 .pattern-top {
-    width: 100px;
+    width: 30vw;
     top: 25px;
     right: 0;
 
@@ -72,8 +75,11 @@ body {
 
 .pattern-bottom {
     width: 300px;
+    height: 210px;
     bottom: -5px;
     left: 0;
+    background-image: url('../images/pattern-squiggly-line-bottom-mobile-tablet.svg');
+    background-size: cover;
 }
 
 .circle-top {
@@ -146,7 +152,7 @@ form input::placeholder {
     border-radius: 10px;
     margin: .8em 0;
     text-align: center;
-    padding: 1em 0;
+    padding: 1em .5em;
     background: hsla(245, 19%, 35%, 0.4);
     border: 2px dashed hsla(245, 15%, 58%, 0.7);
 }
@@ -204,4 +210,60 @@ button {
 
 .attribution a {
     color: var(--Orange-500);
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 500px;
+    }
+
+    body {
+        background-image: url('../images/background-tablet.png');
+    }
+
+    .pattern-bottom {
+        width: 500px;
+        height: 400px;
+    }
+}
+
+@media only screen and (min-height: 995px) {
+    body {
+        height: 100vh;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (min-height: 800px) and (orientation: landscape) {
+    .logo img {
+        width: 200px;
+    }
+
+    .container {
+        max-width: 900px;
+    }
+
+    .lines img {
+        width: 1520px;
+    }
+
+    .pattern-bottom {
+        width: 100%;
+        height: 740px;
+        background-image: url('../images/pattern-squiggly-line-bottom-desktop.svg');
+        background-size: 800px 1000px;
+        background-repeat: no-repeat;
+    }
+
+    h1 {
+        font-size: 3.7rem;
+    }
+
+    .description {
+        font-size: 1.5rem;
+    }
+
+    form {
+        margin: 2em auto 4em;
+        max-width: 460px;
+    }
 }
