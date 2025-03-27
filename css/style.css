@@ -137,6 +137,8 @@ form input {
     background: hsla(245, 19%, 35%, 0.4);
     border: 2px solid var(--Neutral-700);
     outline: none;
+    color: #fff;
+    font-size: 1rem;
 }
 
 form input::placeholder {
@@ -165,12 +167,6 @@ form input::placeholder {
     background: hsla(245, 19%, 35%, 0.6);
     border-radius: 10px;
     padding: 0.5em;
-}
-
-.upload input {
-    position: absolute;
-    top: 0;
-    visibility: hidden;
 }
 
 .info {
