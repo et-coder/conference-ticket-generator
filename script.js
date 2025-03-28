@@ -8,6 +8,22 @@ const previewImage = document.querySelector('.preview-image');
 avatar.addEventListener('change', () => handleFiles(avatar.files));
 upload.addEventListener('click', () => avatar.click());
 
+upload.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    upload.classList.add('dragover');
+});
+upload.addEventListener('dragleave', () => {
+    upload.classList.remove('dragover');
+});
+
+upload.addEventListener('drop', (event) => {
+    event.preventDefault();
+    upload.classList.remove("dragover");
+    const files = event.dataTransfer.files;
+    handleFiles(files);
+});
+
+
 // HandleFile
 function handleFiles(files) {
     //check if file is uploaded
