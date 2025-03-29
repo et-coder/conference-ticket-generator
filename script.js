@@ -6,6 +6,11 @@ const previewImage = document.querySelector('.preview-image');
 const removeBtn = document.querySelector('.remove-btn');
 const changeBtn = document.querySelector('.change-btn');
 
+// Input Fields
+const fullName = document.querySelector('#full-name');
+const email = document.querySelector('#email');
+const userName = document.querySelector('#username');
+
 // Listen for events
 avatar.addEventListener('change', () => handleFiles(avatar.files));
 upload.addEventListener('click', () => avatar.click());
@@ -34,6 +39,22 @@ changeBtn.addEventListener('click', (e) => {
     e.preventDefault();
     avatar.click();
 });
+
+fullName.addEventListener('keydown', (e) => {
+    if (e.key == 'Enter') {
+        validateInput(fullName);
+    }
+})
+email.addEventListener('keydown', (e) => {
+    if (e.key == 'Enter') {
+        validateInput(email);
+    }
+})
+userName.addEventListener('keydown', (e) => {
+    if (e.key == 'Enter') {
+        validateInput(userName);
+    }
+})
 
 
 // HandleFile
@@ -67,3 +88,25 @@ function removeImage() {
     avatar.value = '';
     upload.style.display = 'block';
 }
+
+function validateInput(input) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const inputField = (input.name.charAt(0).toUpperCase() + input.name.slice(1)).replace("-", " ");
+    const isEmpty = (input) => {
+        if (input.value === '' || input.value === null) {
+            return true;
+        } else return false;
+    }
+
+    if (isEmpty(input)) {
+        console.log(`${inputField} cannot be empty`);
+        return;
+    }
+
+    if (input.type === 'email') {
+        if (!emailRegex.test(input.value)) {
+            console.log('Invalid Email address');
+        }
+    }
+}
+
