@@ -41,6 +41,19 @@ function handleFiles(files) {
     //check if file is uploaded
     if (files.length > 0) {
         const photo = files[0];
+        const validTypes = ['image/png', 'image/jpeg'];
+        const maxSize = 500 * 1024 // 500KB in bytes
+
+        // Validate uploaded photo
+        if (!validTypes.includes(photo.type)) {
+            showError('Invalid file type. Please upload JPG or PNG.');
+            return;
+        }
+
+        if (photo.size > maxSize) {
+            showError('File too large. Please upload a photo under 500KB.');
+            return;
+        }
 
         previewImage.src = URL.createObjectURL(photo);
         upload.style.display = 'none';
