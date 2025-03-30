@@ -221,7 +221,7 @@ form input::placeholder {
     align-items: center;
 }
 
-.info svg {
+.info #icon {
     margin-right: .8em;
 }
 
@@ -239,10 +239,6 @@ form input::placeholder {
 
 .dragover {
     background: hsla(245, 19%, 35%, 0.5);
-}
-
-.error {
-    color: hsl(7, 71%, 60%);
 }
 
 /* Ticket Section */
