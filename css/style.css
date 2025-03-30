@@ -156,6 +156,7 @@ form input::placeholder {
     text-align: center;
     background: hsla(245, 19%, 35%, 0.4);
     border: 2px dashed hsla(245, 15%, 58%, 0.7);
+    height: 130px;
 }
 
 .upload img {
@@ -174,6 +175,7 @@ form input::placeholder {
 
 .upload {
     padding: 1em .5em;
+    height: 100%;
 }
 
 .upload:hover {
@@ -219,7 +221,7 @@ form input::placeholder {
     align-items: center;
 }
 
-.info img {
+.info svg {
     margin-right: .8em;
 }
 
@@ -233,6 +235,14 @@ form input::placeholder {
     border-radius: 10px;
     background-color: var(--Orange-500);
 
+}
+
+.dragover {
+    background: hsla(245, 19%, 35%, 0.5);
+}
+
+.error {
+    color: hsl(7, 71%, 60%);
 }
 
 /* Ticket Section */
