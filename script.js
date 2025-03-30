@@ -67,15 +67,16 @@ function handleFiles(files) {
 
         // Validate uploaded photo
         if (!validTypes.includes(photo.type)) {
-            showError('Invalid file type. Please upload JPG or PNG.');
+            showError(upload.parentElement, 'Invalid file type. Please upload JPG or PNG.');
             return;
-        }
+        } else removeError(upload.parentElement);
 
         if (photo.size > maxSize) {
-            showError('File too large. Please upload a photo under 500KB.');
+            showError(upload.parentElement, 'File too large. Please upload a photo under 500KB.');
             return;
-        }
+        } else removeError(upload.parentElement);
 
+        //preview uploaded photo
         previewImage.src = URL.createObjectURL(photo);
         upload.style.display = 'none';
         preview.style.display = 'block';
@@ -90,8 +91,10 @@ function removeImage() {
 }
 
 function validateInput(input) {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const inputField = (input.name.charAt(0).toUpperCase() + input.name.slice(1)).replace("-", " ");
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; //email pattern
+    const inputField = (input.name.charAt(0).toUpperCase() + input.name.slice(1)).replace("-", " "); // Capitalize and replace hyphen with whitepace
+
+    //check if input is empty
     const isEmpty = (input) => {
         if (input.value === '' || input.value === null) {
             return true;
@@ -99,14 +102,57 @@ function validateInput(input) {
     }
 
     if (isEmpty(input)) {
-        console.log(`${inputField} cannot be empty`);
+        showError(input, `${inputField} cannot be empty`);
         return;
+    } else {
+        removeError(input);
     }
 
     if (input.type === 'email') {
+
         if (!emailRegex.test(input.value)) {
-            console.log('Invalid Email address');
+            showError(input, 'Please enter a valid Email address');
         }
-    }
+    } else removeError(input);
 }
 
+function showError(el, message) {
+    // Remove previous error if exists
+    if (el.nextElementSibling.classList.contains('error')) {
+        el.nextElementSibling.remove();
+    }
+
+    const color = 'hsl(7, 71%, 60%)';
+
+    // create error
+    const error = document.createElement('p');
+    const errorIcon = document.createElement('img');
+    const errorMsg = document.createElement('span');
+
+    error.classList.add('error');
+    errorIcon.src = 'images/icon-error.svg';
+    errorIcon.id = 'icon';
+    errorMsg.textContent = message;
+    error.style.color = color;
+
+    error.appendChild(errorIcon);
+    error.appendChild(errorMsg);
+
+    if (el.classList.contains('upload-zone')) {
+        const info = document.querySelector('.info');
+        info.style.display = 'none';
+    } else {
+        el.style.borderColor = color;
+    }
+
+    // Add error to DOM
+    el.after(error);
+
+}
+
+function removeError(el) {
+    if (el.nextElementSibling.classList.contains('error')) {
+        el.nextElementSibling.remove();
+        el.style.borderColor = 'hsl(245, 19%, 35%)';
+    }
+}
