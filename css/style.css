@@ -125,7 +125,9 @@ form {
 }
 
 form label {
+    display: inline-block;
     font-size: 1.2rem;
+    margin: 1.5em 0 .75em;
 }
 
 form input {
@@ -133,7 +135,6 @@ form input {
     width: 100%;
     padding: 17px;
     border-radius: 10px;
-    margin: .75em 0 1.7em;
     background: hsla(245, 19%, 35%, 0.4);
     border: 2px solid var(--Neutral-700);
     outline: none;
@@ -212,16 +213,17 @@ form input::placeholder {
     cursor: pointer;
 }
 
-.info {
+.info,
+.error {
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--Neutral-300);
-    margin: 1em 0 2.5em;
     display: flex;
     align-items: center;
+    margin-top: 1em;
 }
 
-.info #icon {
+#icon {
     margin-right: .8em;
 }
 
@@ -234,6 +236,7 @@ form input::placeholder {
     border: none;
     border-radius: 10px;
     background-color: var(--Orange-500);
+    margin: 1.5em 0;
 
 }
 
