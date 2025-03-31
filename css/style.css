@@ -171,8 +171,8 @@ form input::placeholder {
     display: block;
     width: 45px;
     margin: 0 auto 1em;
-    border: 2px solid var(--Neutral-700);
-    background: hsla(245, 19%, 35%, 0.6);
+    border: 2px solid var(--Neutral-500);
+    background: hsla(245, 19%, 35%, 0.8);
     border-radius: 10px;
     padding: 0.3em;
 }
@@ -247,7 +247,7 @@ form input::placeholder {
     margin-right: .8em;
 }
 
-.generate {
+.generate-btn {
     font-size: 1rem;
     font-weight: 600;
     color: var(--Neutral-900);
@@ -260,8 +260,15 @@ form input::placeholder {
 
 }
 
-.dragover {
-    background: hsla(245, 19%, 35%, 0.5);
+.generate-btn:hover {
+    background-color: var(--Orange-700);
+}
+
+.dragover,
+.upload:hover,
+input:hover {
+    background: hsla(245, 19%, 35%, 0.7);
+    cursor: pointer;
 }
 
 /* Ticket Section */
