@@ -2,9 +2,14 @@
 const upload = document.querySelector('.upload');
 const avatar = document.querySelector('#avatar');
 const preview = document.querySelector('.preview');
-const previewImage = document.querySelector('.preview-image');
+const previewImage = document.querySelector('.preview-image img');
 const removeBtn = document.querySelector('.remove-btn');
 const changeBtn = document.querySelector('.change-btn');
+const generateBtn = document.querySelector('.generate');
+const form = document.querySelector('form');
+const inputs = form.querySelectorAll('input');
+
+console.log(inputs)
 
 // Input Fields
 const fullName = document.querySelector('#full-name');
@@ -31,8 +36,10 @@ upload.addEventListener('drop', (event) => {
 });
 
 removeBtn.addEventListener('click', (e) => {
+    console.log('removed');
     e.preventDefault();
     removeImage();
+
 });
 
 changeBtn.addEventListener('click', (e) => {
@@ -44,15 +51,26 @@ fullName.addEventListener('keydown', (e) => {
     if (e.key == 'Enter') {
         validateInput(fullName);
     }
-})
+});
 email.addEventListener('keydown', (e) => {
     if (e.key == 'Enter') {
         validateInput(email);
     }
-})
+});
 userName.addEventListener('keydown', (e) => {
     if (e.key == 'Enter') {
         validateInput(userName);
+    }
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('submit')
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+
     }
 })
 
