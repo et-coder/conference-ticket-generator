@@ -9,7 +9,7 @@ const generateBtn = document.querySelector('.generate');
 const form = document.querySelector('form');
 const inputs = form.querySelectorAll('input');
 
-console.log(inputs)
+const uploadZone = document.querySelector('.upload-zone');
 
 // Input Fields
 const fullName = document.querySelector('#full-name');
@@ -19,6 +19,9 @@ const userName = document.querySelector('#username');
 // Listen for events
 avatar.addEventListener('change', () => handleFiles(avatar.files));
 upload.addEventListener('click', () => avatar.click());
+upload.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') avatar.click();
+});
 
 upload.addEventListener('dragover', (event) => {
     event.preventDefault();
@@ -36,7 +39,6 @@ upload.addEventListener('drop', (event) => {
 });
 
 removeBtn.addEventListener('click', (e) => {
-    console.log('removed');
     e.preventDefault();
     removeImage();
 
@@ -47,33 +49,18 @@ changeBtn.addEventListener('click', (e) => {
     avatar.click();
 });
 
-fullName.addEventListener('keydown', (e) => {
-    if (e.key == 'Enter') {
-        validateInput(fullName);
-    }
-});
-email.addEventListener('keydown', (e) => {
-    if (e.key == 'Enter') {
-        validateInput(email);
-    }
-});
-userName.addEventListener('keydown', (e) => {
-    if (e.key == 'Enter') {
-        validateInput(userName);
-    }
-});
+inputs.forEach((input) => {
+    input.addEventListener('keydown', (e) => {
+        if (e.key == 'Enter') {
+            !validateInput(input)
+        }
+    })
+})
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('submit')
+
 });
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-
-    }
-})
-
 
 // HandleFile
 function handleFiles(files) {
@@ -122,16 +109,16 @@ function validateInput(input) {
     if (isEmpty(input)) {
         showError(input, `${inputField} cannot be empty`);
         return;
-    } else {
-        removeError(input);
-    }
-
-    if (input.type === 'email') {
+    } else if (input.type === 'email') {
 
         if (!emailRegex.test(input.value)) {
             showError(input, 'Please enter a valid Email address');
         }
-    } else removeError(input);
+    } else removeError(input); {
+        removeError(input);
+        return;
+    }
+
 }
 
 function showError(el, message) {
