@@ -95,11 +95,11 @@ body {
 
 .logo {
     display: inline-block;
-    margin: 1em 0 .5em;
+    margin: 2em 0 .5em;
 }
 
 .logo img {
-    width: 170px;
+    width: 165px;
 }
 
 /* Form section */
