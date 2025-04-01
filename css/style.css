@@ -14,19 +14,18 @@
     --Neutral-900: hsl(248, 70%, 10%);
     --Orange-500: hsl(7, 88%, 67%);
     --Orange-700: hsl(7, 71%, 60%);
-    --Gradient-text: hsl(7, 86%, 67%);
 }
 
-html,
-body {
+html {
+    position: relative;
     overflow-x: hidden;
     min-height: 100%;
     width: 100vw;
 }
 
 body {
-    position: relative;
-    height: 100%;
+    position: absolute;
+    min-height: 100%;
     width: 100%;
     font-family: 'Inconsolata', serif;
     background: url('../images/background-mobile.png');
@@ -40,7 +39,7 @@ body {
 .container {
     max-width: 350px;
     margin: 0 auto;
-    padding: 1em;
+    padding: 10px;
     text-align: center;
 }
 
@@ -105,7 +104,7 @@ body {
 
 /* Form section */
 .form-section {
-    /* display: none; */
+    display: none;
 }
 
 h1 {
@@ -273,7 +272,122 @@ input:hover {
 
 /* Ticket Section */
 .ticket-section {
-    display: none;
+    /* display: none; */
+    /* height: 100vh; */
+    overflow-y: auto;
+}
+
+.ticket-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 1em 0 .75em;
+}
+
+.name {
+    color: #fff;
+    background: linear-gradient(to right, var(--Orange-700), #fff) no-repeat;
+    background-size: 3.5em;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.email {
+    color: var(--Orange-500)
+}
+
+.ticket {
+    position: relative;
+    width: 100%;
+    min-height: 160px;
+    margin: 4em auto 10em;
+    padding: 15px 10px;
+    display: flex;
+    background: url('../images/pattern-ticket.svg') no-repeat;
+    background-size: 100%;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.ticket .content {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ticket .top {
+    display: flex;
+}
+
+.mark {
+    width: 100%;
+    height: 30px;
+    flex: 10px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: .5em;
+    flex: 90%;
+}
+
+.title .date {
+    display: block;
+    font-size: .9rem;
+    font-weight: 400;
+    color: var(--Neutral-300);
+    margin-top: .5em;
+}
+
+.ticket .bottom {
+    display: flex;
+}
+
+.profile {
+    width: 45px;
+    overflow: hidden;
+    margin-right: .7em;
+}
+
+.profile img {
+    width: 100%;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.github-icon {
+    height: 20px;
+    margin-right: .3em;
+}
+
+.username {
+    font-size: .85rem;
+    display: flex;
+    margin-top: .3em;
+    display: flex;
+    align-items: center;
+}
+
+.ticket-no {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    font-size: 1.3rem;
+    color: var(--Neutral-500);
+    transform: rotate(90deg);
 }
 
 .attribution {
