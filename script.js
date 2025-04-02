@@ -16,8 +16,19 @@ const fullName = document.querySelector('#full-name');
 const email = document.querySelector('#email');
 const userName = document.querySelector('#username');
 
+const color = 'hsl(7, 71%, 60%)';
+
+let files = '';
+
 // Listen for events
-avatar.addEventListener('change', () => handleFiles(avatar.files));
+avatar.addEventListener('change', (e) => {
+    if (e.target.files[0]) {
+        files = avatar.files;
+        validateInput(avatar);
+    }
+    handleFiles(avatar.files);
+
+});
 upload.addEventListener('click', () => avatar.click());
 upload.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') avatar.click();
@@ -34,7 +45,8 @@ upload.addEventListener('dragleave', () => {
 upload.addEventListener('drop', (event) => {
     event.preventDefault();
     upload.classList.remove("dragover");
-    const files = event.dataTransfer.files;
+    files = event.dataTransfer.files;
+    validateInput(avatar);
     handleFiles(files);
 });
 
@@ -51,15 +63,49 @@ changeBtn.addEventListener('click', (e) => {
 
 inputs.forEach((input) => {
     input.addEventListener('keydown', (e) => {
+
         if (e.key == 'Enter') {
-            !validateInput(input)
+            !validateInput(input);
+            e.preventDefault();
         }
     })
-})
+});
+
+inputs.forEach((input) => {
+    input.addEventListener('blur', (e) => {
+
+        validateInput(input);
+    });
+});
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const formSection = document.querySelector('.form-section');
+    const ticketSection = document.querySelector('.ticket-section');
+    const name = fullName.value.split(' ');
+    let valid = true;
 
+    inputs.forEach((input) => {
+        validateInput(input);
+        if (!validateInput(input)) {
+            valid = false;
+        }
+    });
+
+    if (valid) {
+        // Insert user values in the ticket
+        ticketSection.querySelector('.first').textContent = name[0];
+        ticketSection.querySelector('.last').textContent = ` ${name[1]}`;
+        ticketSection.querySelector('.email').textContent = email.value;
+        ticketSection.querySelector('.user-name').textContent = userName.value;
+        ticketSection.querySelector('.full-name').textContent = fullName.value;
+        ticketSection.querySelector('.profile img').src = URL.createObjectURL(files[0]);
+
+        // display the generated ticket section
+        formSection.style.display = 'none';
+        ticketSection.style.display = 'block';
+
+    }
 });
 
 // HandleFile
@@ -93,6 +139,7 @@ function removeImage() {
     previewImage.src = '';
     avatar.value = '';
     upload.style.display = 'block';
+    files = '';
 }
 
 function validateInput(input) {
@@ -106,17 +153,28 @@ function validateInput(input) {
         } else return false;
     }
 
-    if (isEmpty(input)) {
-        showError(input, `${inputField} cannot be empty`);
-        return;
-    } else if (input.type === 'email') {
+    if (input.type === 'file') {
+        console.log(files);
+        if (files === '' || files === null) {
+            const info = document.querySelector('.info');
+            info.style.color = color;
+            info.querySelector('img').src = 'images/icon-error.svg';
+            uploadZone.style.borderColor = color;
+            return false;
+        } else {
+            removeError(input)
+            return true;
+        };
+    } else if (isEmpty(input)) {
 
-        if (!emailRegex.test(input.value)) {
-            showError(input, 'Please enter a valid Email address');
-        }
-    } else removeError(input); {
+        showError(input, `${inputField} cannot be empty`);
+        return false;
+    } else if (input.type === 'email' && !emailRegex.test(input.value)) {
+        showError(input, 'Please enter a valid Email address');
+        return false;
+    } else {
         removeError(input);
-        return;
+        return true;
     }
 
 }
@@ -126,8 +184,6 @@ function showError(el, message) {
     if (el.nextElementSibling.classList.contains('error')) {
         el.nextElementSibling.remove();
     }
-
-    const color = 'hsl(7, 71%, 60%)';
 
     // create error
     const error = document.createElement('p');
@@ -146,6 +202,7 @@ function showError(el, message) {
     if (el.classList.contains('upload-zone')) {
         const info = document.querySelector('.info');
         info.style.display = 'none';
+        el.style.borderColor = color;
     } else {
         el.style.borderColor = color;
     }
@@ -156,6 +213,12 @@ function showError(el, message) {
 }
 
 function removeError(el) {
+    if (el.type === 'file') {
+        const info = document.querySelector('.info');
+        info.style.color = 'hsl(245, 15%, 58%)';
+        info.querySelector('img').src = 'images/icon-info.svg';
+        uploadZone.style.borderColor = 'hsl(245, 15%, 58%)';
+    }
     if (el.nextElementSibling.classList.contains('error')) {
         el.nextElementSibling.remove();
         el.style.borderColor = 'hsl(245, 19%, 35%)';
