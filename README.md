@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution](hhhttps://www.frontendmentor.io/solutions/an-interactive-coding-conference-ticket-generator-4XqE3PCWdD)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/an-interactive-coding-conference-ticket-generator-4XqE3PCWdD)
 - Live Site URL: [Live site](https://et-coder.github.io/conference-ticket-generator/)
 
 ## My process
