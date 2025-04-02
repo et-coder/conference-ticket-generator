@@ -258,6 +258,7 @@ form input::placeholder {
 
 .generate-btn:hover {
     background-color: var(--Orange-700);
+    cursor: pointer;
 }
 
 .dragover,
