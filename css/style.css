@@ -103,9 +103,6 @@ body {
 }
 
 /* Form section */
-.form-section {
-    display: none;
-}
 
 h1 {
     font-size: 1.75rem;
@@ -202,7 +199,6 @@ form input::placeholder {
     margin: 0 auto;
     width: 50px;
     height: 50px;
-    /* margin-bottom: 1em; */
     border-radius: 12px;
     border: 2px solid var(--Neutral-500);
     overflow: hidden;
@@ -273,7 +269,7 @@ input:hover {
 
 /* Ticket Section */
 .ticket-section {
-    /* display: none; */
+    display: none;
     overflow-y: auto;
     margin: 0 auto;
 }
@@ -471,8 +467,8 @@ input:hover {
         font-size: 3.7rem;
     }
 
-    .description {
-        font-size: 1rem;
+    .form-section .description {
+        font-size: 1.5rem;
     }
 
     .ticket-section {
